@@ -1,5 +1,5 @@
 /**
- * Pivate Routes are those API urls that require the user to be
+ * Private Routes are those API urls that require the user to be
  * logged in before they can be called from the front end.
  * 
  * Basically all HTTP requests to these endpoints must have an
@@ -18,6 +18,11 @@ import * as actions from './actions';
 // declare a new router to include all the endpoints
 const router = Router();
 
+// get user and its favorites
 router.get('/user', safe(actions.getUsers));
+router.get('/user/favorites', safe(actions.getUsers));
+
+// post
+
 
 export default router;

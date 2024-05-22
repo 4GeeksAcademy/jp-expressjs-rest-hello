@@ -1,12 +1,13 @@
 import {
-  Entity, Column, PrimaryGeneratedColumn, ManyToMany, 
-  BaseEntity, JoinTable
+  Entity, Column, PrimaryGeneratedColumn, 
+  BaseEntity, JoinTable, OneToMany,
 } from 'typeorm';
+import { Favorites } from './Favorites';
 
 @Entity()
 export class Users extends BaseEntity{
   @PrimaryGeneratedColumn()
-  id: number;
+  user_id: number;
 
   @Column()
   first_name: string;
@@ -20,8 +21,7 @@ export class Users extends BaseEntity{
   @Column()
   password: string;
 
-  // @ManyToMany(() => Planet)
-  // @JoinTable()
-  // planets: Planet[];
-  
+
+  @OneToMany(() => Favorites, favorite => favorite.users)
+  favorites: Favorites[];
 }
